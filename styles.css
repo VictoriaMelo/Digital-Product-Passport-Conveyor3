@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background: #333;
+    background: #0000ff;
     color: #fff;
     padding: 1em 0;
     text-align: center;
@@ -24,7 +24,7 @@ main {
 }
 
 section {
-    background: #00f;
+    background: #fff;
     padding: 1em;
     margin-bottom: 2em;
     border-radius: 5px;
