@@ -33,7 +33,7 @@ section {
 
 #qr_code {
     display:         flex;
-    display: -webkit-flex; /* Garante compatibilidade com navegador Safari. */
+    display: -webkit-flex; 
 
     justify-content: center;
     align-items: center;
@@ -45,12 +45,12 @@ section {
 }*/
 
 ul {
-    list-style-type: disc; /* Tipo de marcador da lista */
-    margin-left: 20px; /* Indentação da lista */
+    list-style-type: disc; // Tipo de marcador da lista
+    margin-left: 20px; //Indentação
 }
 
 #technicaldata ul {
-    margin-bottom: 1em; /* Espaçamento inferior para listas na seção technicaldata */
+    margin-bottom: 1em; //Espaçamento inferior para listas
 }
 
 footer {
@@ -70,6 +70,6 @@ footer {
 }
 
 .footer-logo {
-    height: 40px; /* Ajuste a altura conforme necessário */
-    margin-right: 10px; /* Espaçamento entre as logos e o texto */
+    height: 40px; //altura da imagem
+    margin-right: 10px; //Espaçamento entre as logos e o texto
 }
