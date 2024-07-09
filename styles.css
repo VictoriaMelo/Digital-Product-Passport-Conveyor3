@@ -39,10 +39,10 @@ section {
     align-items: center;
 }
 
-#map iframe {
+/*#map iframe {
     width: 100%;
     height: 300px;
-}
+}*/
 
 footer {
     background: #333;
