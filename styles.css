@@ -62,3 +62,14 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    height: 40px; /* Ajuste a altura conforme necessário */
+    margin-right: 10px; /* Espaçamento entre as logos e o texto */
+}
