@@ -17,10 +17,15 @@ header h1 {
     margin: 0;
 }
 
-main {
+/*main {
     padding: 2em;
     max-width: 800px;
     margin: auto;
+}*/
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
 }
 
 section {
@@ -31,7 +36,7 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#qr_code {
+/*#qr_code {
     display:         flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +48,22 @@ section {
     align-items: center;
 }
 
+
 .qr-container img {
     margin-left: 10px;
+}
+*/
+
+#qr_code {
+    flex: 0 0 200px; /* Ajuste a largura conforme necessário */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.content-container {
+    flex: 1;
+    padding-left: 2em;
 }
 
 /*#map iframe {
