@@ -61,6 +61,7 @@ header h1 {
 
 #buttons {
     display: flex;
+    text-align: center;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
@@ -77,6 +78,8 @@ header h1 {
     background-color: #34bcdc;
     color: white;
     border: none;
+    margin: 10px;
+    font-size: 16px;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
