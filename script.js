@@ -1,6 +1,6 @@
 // Adicione aqui os scripts necessários
 document.addEventListener('DOMContentLoaded', () => {
-    // Seu código aqui
+    showSection('identification');
 });
 
 function showSection(sectionId) {
