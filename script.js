@@ -28,7 +28,7 @@ function initMap() {
     }
 
     // Create the map
-    var map = L.map('map').setView([41.79628766973537, -6.767914086950897], 14);
+    var map = L.map('map').setView([41.79628766973537, -6.767914086950897], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
