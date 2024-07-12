@@ -39,14 +39,21 @@ function initMap() {
         .openPopup();
 }
 
-function toggleList(listId) {
+function toggleList(listId, element) {
     const lists = document.querySelectorAll('#productdescription ul');
+    const toggles = document.querySelectorAll('.toggle');
+
     lists.forEach(list => {
         list.classList.add('hidden');
+    });
+
+    toggles.forEach(toggle => {
+        toggle.classList.remove('active');
     });
 
     const activeList = document.getElementById(listId);
     if (activeList) {
         activeList.classList.toggle('hidden');
+        element.classList.toggle('active');
     }
 }
