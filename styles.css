@@ -124,6 +124,10 @@ ul {
     margin-bottom: 1em; //Espaçamento inferior para listas
 }
 
+.hidden {
+    display: none;
+}
+
 footer {
     background: #fff;
     color: #333;
