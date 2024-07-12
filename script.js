@@ -40,20 +40,20 @@ function initMap() {
 }
 
 function toggleList(listId, element) {
-    const lists = document.querySelectorAll('#productdescription ul');
-    const toggles = document.querySelectorAll('.toggle');
+    const activeList = document.getElementById(listId);
+    const isHidden = activeList.classList.contains('hidden');
 
-    lists.forEach(list => {
+    // Hide all lists and remove active class from all toggles
+    document.querySelectorAll('#productdescription ul').forEach(list => {
         list.classList.add('hidden');
     });
-
-    toggles.forEach(toggle => {
+    document.querySelectorAll('.toggle').forEach(toggle => {
         toggle.classList.remove('active');
     });
 
-    const activeList = document.getElementById(listId);
-    if (activeList) {
-        activeList.classList.toggle('hidden');
-        element.classList.toggle('active');
+    // Show the clicked list if it was hidden
+    if (isHidden) {
+        activeList.classList.remove('hidden');
+        element.classList.add('active');
     }
 }
