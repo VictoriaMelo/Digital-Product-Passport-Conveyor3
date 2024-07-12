@@ -41,14 +41,18 @@
                         <h2>Technical data</h2>
                         <p id="powerSupply">Power Supply: 24V</p>
                     </div>
+                    <h2>Product description</h2>
                     <div id="productdescription">
-                        <h2>Product description</h2>
-                        <button onclick="toggleList('physicalList')">Physical part</button>
+                        <div class="toggle" onclick="toggleList('physicalList', this)">
+                            <span class="arrow"></span> Physical part
+                        </div>
                         <ul id="physicalList" class="hidden">
                             <li>1 DC motor, 24V</li>
                             <li>2 light sensors, 24V</li>
                         </ul>
-                        <button onclick="toggleList('cyberList')">Cyber part</button>
+                        <div class="toggle" onclick="toggleList('cyberList', this)">
+                            <span class="arrow"></span> Cyber part
+                        </div>
                         <ul id="cyberList" class="hidden">
                             <li>Controller: Raspberry Pi</li>
                             <li>Control: Multi-agent Systems</li>
