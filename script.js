@@ -38,3 +38,15 @@ function initMap() {
         .bindPopup('Instituto Politécnico de Bragança')
         .openPopup();
 }
+
+function toggleList(listId) {
+    const lists = document.querySelectorAll('#productdescription ul');
+    lists.forEach(list => {
+        list.classList.add('hidden');
+    });
+
+    const activeList = document.getElementById(listId);
+    if (activeList) {
+        activeList.classList.toggle('hidden');
+    }
+}
