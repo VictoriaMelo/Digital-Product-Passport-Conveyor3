@@ -43,13 +43,13 @@
                     </div>
                     <div id="productdescription">
                         <h2>Product description</h2>
-                        <p> Physical part: </p>
-                        <ul>
+                        <button onclick="toggleList('physicalList')">Physical part</button>
+                        <ul id="physicalList" class="hidden">
                             <li>1 DC motor, 24V</li>
                             <li>2 light sensors, 24V</li>
                         </ul>
-                        <p> Cyber part: </p>
-                        <ul>
+                        <button onclick="toggleList('cyberList')">Cyber part</button>
+                        <ul id="cyberList" class="hidden">
                             <li>Controller: Raspberry Pi</li>
                             <li>Control: Multi-agent Systems</li>
                             <li>Connectivity: Wi-Fi</li>
