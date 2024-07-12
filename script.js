@@ -39,21 +39,24 @@ function initMap() {
         .openPopup();
 }
 
-function toggleList(listId, element) {
+function toggleList(listId, element, isSublist = false) {
     const activeList = document.getElementById(listId);
     const isHidden = activeList.classList.contains('hidden');
 
-    // Hide all lists and remove active class from all toggles
-    document.querySelectorAll('#productdescription ul').forEach(list => {
-        list.classList.add('hidden');
-    });
-    document.querySelectorAll('.toggle').forEach(toggle => {
-        toggle.classList.remove('active');
-    });
+    if (!isSublist) {
+        document.querySelectorAll('#productdescription > ul').forEach(list => {
+            list.classList.add('hidden');
+        });
+        document.querySelectorAll('#productdescription .toggle').forEach(toggle => {
+            toggle.classList.remove('active');
+        });
+    }
 
-    // Show the clicked list if it was hidden
     if (isHidden) {
         activeList.classList.remove('hidden');
         element.classList.add('active');
+    } else {
+        activeList.classList.add('hidden');
+        element.classList.remove('active');
     }
 }
