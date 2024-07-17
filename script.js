@@ -39,24 +39,21 @@ function initMap() {
         .openPopup();
 }
 
-function toggleList(listId, element, isSublist = false) {
+function toggleList(listId, element) {
+    const lists = document.querySelectorAll('#productdescription ul');
+    const toggles = document.querySelectorAll('.toggle');
+
+    lists.forEach(list => {
+        list.classList.add('hidden');
+    });
+
+    toggles.forEach(toggle => {
+        toggle.classList.remove('active');
+    });
+
     const activeList = document.getElementById(listId);
-    const isHidden = activeList.classList.contains('hidden');
-
-    if (!isSublist) {
-        document.querySelectorAll('#productdescription > ul').forEach(list => {
-            list.classList.add('hidden');
-        });
-        document.querySelectorAll('#productdescription .toggle').forEach(toggle => {
-            toggle.classList.remove('active');
-        });
-    }
-
-    if (isHidden) {
-        activeList.classList.remove('hidden');
-        element.classList.add('active');
-    } else {
-        activeList.classList.add('hidden');
-        element.classList.remove('active');
+    if (activeList) {
+        activeList.classList.toggle('hidden');
+        element.classList.toggle('active');
     }
 }
