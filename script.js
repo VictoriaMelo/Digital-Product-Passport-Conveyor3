@@ -40,20 +40,12 @@ function initMap() {
 }
 
 function toggleList(listId, element) {
-    const lists = document.querySelectorAll('#productdescription ul');
-    const toggles = document.querySelectorAll('.toggle');
-
-    lists.forEach(list => {
-        list.classList.add('hidden');
-    });
-
-    toggles.forEach(toggle => {
-        toggle.classList.remove('active');
-    });
-
     const activeList = document.getElementById(listId);
+    const arrow = element.querySelector('.arrow');
+
     if (activeList) {
-        activeList.classList.toggle('hidden');
-        element.classList.toggle('active');
+        const isHidden = activeList.classList.contains('hidden');
+        activeList.classList.toggle('hidden', !isHidden);
+        arrow.classList.toggle('active', isHidden);
     }
 }
