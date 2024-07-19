@@ -84,6 +84,19 @@
                                     <li>Brand: <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf" target="_blank">Keyestudio</a></li>
                                 </ul>
                             </ul>
+                            <div class="toggle" onclick="toggleList('batteryList', this)">
+                                <span class="arrow"></span> Power supply
+                            </div>
+                            <ul id="batteryList" class="hidden">
+                                <li>1x Battery 12V</li>
+                                <li>1x Power supply socket to enable direct power supply from the source (AC power supply)</li>
+                            </ul>
+                            <div class="toggle" onclick="toggleList('pcbList', this)">
+                                <span class="arrow"></span> Printed Circuit Board
+                            </div>
+                            <ul id="pcbList" class="hidden">
+                                <li>The board is used to establish a connection between the controller and the components of the transportation system. The electronic components included are resistors, capacitors, transistors, a 0.95" OLED RGB LCD display, an on/off switch, a step-down converter (7-24V to USB 5V 3A for Raspberry Pi power supply), and a step-up converter for the conveyor components power supply.</li>
+                            </ul>
                         </ul>
                         <div class="toggle" onclick="toggleList('cyberList', this)">
                             <span class="arrow"></span> Cyber part
