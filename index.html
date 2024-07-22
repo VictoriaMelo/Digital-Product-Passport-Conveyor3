@@ -34,13 +34,9 @@
                     <h2>Identification</h2>
                     <p id="productIdentifier">Product Identifier: CeDRI-1720704766312-2898</p>
                     <p id="brand">Brand: Instituto Politécnico de Bragança</p>
-                    <p id="model">Model: Conveyor Belt</p>
+                    <p id="model">Model: Conveyor Module</p>
                 </section>
                 <section id="technicaldata" class="content-section" style="display:none;">
-                    <div id="techdata">
-                        <h2>Technical data</h2>
-                        <p id="powerSupply">Power Supply: 24V</p>
-                    </div>
                     <h2>Product description</h2>
                     <div id="productdescription">
                         <div class="toggle" onclick="toggleList('physicalList', this)">
@@ -51,7 +47,7 @@
                                 <span class="arrow"></span> Motors
                             </div>
                             <ul id="motorsList" class="hidden">
-                                <li>1x DC motor:</li>
+                                <li>DC motor</li>
                                 <ul>
                                     <li>Brand: Fischertechnik</li>
                                     <li>Power supply: 24 V</li>
@@ -61,26 +57,37 @@
                                 <span class="arrow"></span> Conveyor belt
                             </div>
                             <ul id="beltList" class="hidden">
-                                <li>1x Conveyor belt</li>
+                                <li>Conveyor belt</li>
+                                <ul>
+                                    <li>Brand: Fischertechnik</li>
+                                </ul>
                             </ul>
                             <div class="toggle" onclick="toggleList('sensorsList', this)">
                                 <span class="arrow"></span> Sensors
                             </div>
                             <ul id="sensorsList" class="hidden">
-                                <li>2x Photoelectric sensors:</li>
+                                <li>Photoelectric sensor</li>
                                 <ul>
-                                    <li>2x Phototransistors</li>
-                                    <li>2x LED lights barrier</li>
+                                    <li>Phototransistor</li>
+                                    <li>LED lights barrier</li>
+                                    <li>Role: Input detection</li>
                                     <li>Brand: Fischertechnik</li>
                                 </ul>
-                                <li>1x Current sensor:</li>
+                                <li>Photoelectric sensor</li>
                                 <ul>
-                                    <li>Specification: INA219 Current Sensor Breakout</li>
-                                    <li>Brand: <a href="https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview" target="_blank">Adafruit</a></li>
+                                    <li>Phototransistor</li>
+                                    <li>LED lights barrier</li>
+                                    <li>Role: Output detection</li>
+                                    <li>Brand: Fischertechnik</li>
+                                </ul>
+                                <li>Current sensor</li>
+                                <ul>
+                                    <li>Specification: INA219 Current Sensor Breakout (<a href="https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview" target="_blank">Adafruit</a>)</li>
+                                    <li>Brand: </li>
                                 </ul>
                                 <li>Accelerometer sensor:</li>
                                 <ul>
-                                    <li>Specification: ADXL345 <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf" target="_blank">(Keyestudio)</a></li>
+                                    <li>Specification: ADXL345 (<a href="https://www.analog.com/media/en/technical-documentation/data-sheets/adxl345.pdf" target="_blank">Keyestudio</a>)</li>
                                 </ul>
                             </ul>
                             <div class="toggle" onclick="toggleList('batteryList', this)">
