@@ -70,7 +70,7 @@ function setupMQTT() {
         });
     });
 
-    client.on('message', function(topic, message) => {
+    client.on('message', function(topic, message) {
         if (topic === 'processed/operational/data') {
             const data = JSON.parse(message.toString());
             updateOperationalData(data);
