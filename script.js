@@ -1,6 +1,7 @@
 // Adicione aqui os scripts necessários
 document.addEventListener('DOMContentLoaded', () => {
     showSection('identification');
+    setupMQTT();
 });
 
 function showSection(sectionId) {
@@ -48,4 +49,41 @@ function toggleList(listId, element) {
         activeList.classList.toggle('hidden', !isHidden);
         arrow.classList.toggle('active', isHidden);
     }
+}
+
+function setupMQTT() {
+    const mqttBroker = 'ws://broker.hivemq.com:8000/mqtt'; // WebSocket URL for the broker
+    const topic = 'processed/operational/data'; // Use o seu tópico
+
+// Connect to the MQTT broker
+    const client = mqtt.connect(mqttBroker);
+
+    // Subscribe to the topic once connected
+    client.on('connect', function () {
+        console.log(`Connected to broker: ${mqttBroker}`);
+        client.subscribe(topic, function (err) {
+            if (!err) {
+                console.log(`Subscribed to topic: ${topic}`);
+            } else {
+                console.error(`Failed to subscribe to topic: ${topic}`, err);
+            }
+        });
+    });
+
+    client.on('message', function(topic, message) => {
+        if (topic === 'processed/operational/data') {
+            const data = JSON.parse(message.toString());
+            updateOperationalData(data);
+        }
+    });
+}
+
+function updateOperationalData(data) {
+    const section = document.getElementById('introduction');
+    section.innerHTML = `
+        <h2>Operational Data</h2>
+        <p>Speed: ${data.speed} m/s</p>
+        <p>Temperature: ${data.temperature} °C</p>
+        <p>Status: ${data.status}</p>
+    `;
 }
