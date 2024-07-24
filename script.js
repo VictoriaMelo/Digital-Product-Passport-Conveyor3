@@ -52,7 +52,7 @@ function toggleList(listId, element) {
 }
 
 function setupMQTT() {
-    const mqttBroker = 'ws://broker.hivemq.com:8000/mqtt'; // WebSocket URL for the broker
+    const mqttBroker = 'wss://broker.hivemq.com:8000/mqtt'; // WebSocket URL for the broker
     const topic = 'processed/operational/data'; // Use o seu tópico
 
 // Connect to the MQTT broker
@@ -72,6 +72,7 @@ function setupMQTT() {
 
     client.on('message', function(topic, message) {
         if (topic === 'processed/operational/data') {
+            console.log('Message received:', message.toString());
             const data = JSON.parse(message.toString());
             updateOperationalData(data);
         }
