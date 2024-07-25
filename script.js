@@ -58,7 +58,7 @@ function setupMQTT() {
     if (!mqttClient) {
         const mqttBroker = 'wss://test.mosquitto.org:8081/mqtt'; // WebSocket URL for the broker
         const topic = 'conveyor/operational_data/#'; // Use o seu tópico
-        mqttClient = mqtt.connect('mqttBroker');
+        mqttClient = mqtt.connect(mqttBroker);
 
         mqttClient.on('connect', () => {
             console.log('Connected to broker: ${mqttBroker}');
