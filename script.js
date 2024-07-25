@@ -55,10 +55,9 @@ function toggleList(listId, element) {
 }
 
 function setupMQTT() {
-    const mqttBroker = 'wss://test.mosquitto.org:8081/mqtt'; // WebSocket URL for the broker
-    const topic = 'conveyor/operational_data/#'; // Use o seu tópico
     if (!mqttClient) {
-        
+        const mqttBroker = 'wss://test.mosquitto.org:8081/mqtt'; // WebSocket URL for the broker
+        const topic = 'conveyor/operational_data/#'; // Use o seu tópico
         mqttClient = mqtt.connect('mqttBroker');
 
         mqttClient.on('connect', () => {
