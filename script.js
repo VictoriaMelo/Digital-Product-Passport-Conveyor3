@@ -1,4 +1,7 @@
 // Adicione aqui os scripts necessários
+
+var mqttClient = null;
+
 document.addEventListener('DOMContentLoaded', () => {
     showSection('identification');
     setupMQTT();
@@ -52,39 +55,77 @@ function toggleList(listId, element) {
 }
 
 function setupMQTT() {
-    const mqttBroker = 'wss://test.mosquitto.org:8081/mqtt'; // WebSocket URL for the broker
-    const topic = 'conveyor/operational_data/#'; // Use o seu tópico
+    if (!mqttClient) {
+        mqttClient = mqtt.connect('wss://test.mosquitto.org:8081/mqtt');
 
-// Connect to the MQTT broker
-    const client = mqtt.connect(mqttBroker);
-
-    // Subscribe to the topic once connected
-    client.on('connect', function () {
-        console.log(`Connected to broker: ${mqttBroker}`);
-        client.subscribe(topic, function (err) {
-            if (!err) {
-                console.log(`Subscribed to topic: ${topic}`);
-            } else {
-                console.error(`Failed to subscribe to topic: ${topic}`, err);
-            }
+        mqttClient.on('connect', () => {
+            console.log('Conectado ao broker MQTT');
+            mqttClient.subscribe('conveyor/operational_data/#', (err) => {
+                if (err) {
+                    console.error('Erro ao se inscrever nos tópicos:', err);
+                } else {
+                    console.log('Inscrito com sucesso nos tópicos conveyor/operational_data/#');
+                }
+            });
         });
-    });
 
-    client.on('message', function(topic, message) {
-        if (topic === 'conveyor/operational_data/#') {
-            console.log('Message received:', message.toString());
-            const data = JSON.parse(message.toString());
-            updateOperationalData(data);
-        }
-    });
+        mqttClient.on('error', (err) => {
+            console.error('Erro na conexão MQTT:', err);
+        });
+
+        mqttClient.on('offline', () => {
+            console.log('MQTT Client está offline');
+        });
+
+        mqttClient.on('reconnect', () => {
+            console.log('Reconectando ao broker MQTT...');
+        });
+
+        mqttClient.on('message', (topic, message) => {
+            const msg = message.toString();
+            console.log(`Recebido: ${topic} -> ${msg}`);
+            updateOperationalData(topic, msg);
+        });
+    }
 }
 
-function updateOperationalData(data) {
-    const section = document.getElementById('introduction');
-    section.innerHTML = `
-        <h2>Operational Data</h2>
-        <p>Speed: ${data.speed} m/s</p>
-        <p>Temperature: ${data.temperature} °C</p>
-        <p>Status: ${data.status}</p>
-    `;
+function updateOperationalData(topic, message) {
+    console.log(`Atualizando dados para o tópico: ${topic} com a mensagem: ${message}`);
+    switch (topic) {
+        case 'conveyor/operational_data/conveyors_in_sequence':
+            document.getElementById('conveyors_in_sequence').innerText = message;
+            break;
+        case 'conveyor/operational_data/position_in_sequence':
+            document.getElementById('position_in_sequence').innerText = message;
+            break;
+        case 'conveyor/operational_data/motor_status':
+            document.getElementById('motor_status').innerText = message;
+            break;
+        case 'conveyor/operational_data/input_sensor_status':
+            document.getElementById('input_sensor_status').innerText = message;
+            break;
+        case 'conveyor/operational_data/output_sensor_status':
+            document.getElementById('output_sensor_status').innerText = message;
+            break;
+        case 'conveyor/operational_data/number_of_pieces':
+            document.getElementById('number_of_pieces').innerText = message;
+            break;
+        case 'conveyor/operational_data/last_piece_time':
+            document.getElementById('last_piece_time').innerText = message;
+            break;
+        case 'conveyor/operational_data/motor_operating_time':
+            document.getElementById('motor_operating_time').innerText = message;
+            break;
+        case 'conveyor/operational_data/vibration':
+            document.getElementById('vibration').innerText = message;
+            break;
+        case 'conveyor/operational_data/current':
+            document.getElementById('current').innerText = message;
+            break;
+        case 'conveyor/operational_data/battery_level':
+            document.getElementById('battery_level').innerText = message;
+            break;
+        default:
+            console.log(`Tópico desconhecido: ${topic}`);
+    }
 }
