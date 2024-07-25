@@ -53,7 +53,7 @@ function toggleList(listId, element) {
 
 function setupMQTT() {
     const mqttBroker = 'wss://broker.hivemq.com:8000/mqtt'; // WebSocket URL for the broker
-    const topic = 'processed/operational/data'; // Use o seu tópico
+    const topic = 'conveyor/operational_data/#''; // Use o seu tópico
 
 // Connect to the MQTT broker
     const client = mqtt.connect(mqttBroker);
