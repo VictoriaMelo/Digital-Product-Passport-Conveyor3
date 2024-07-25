@@ -85,7 +85,7 @@ function setupMQTT() {
 
         mqttClient.on('message', (topic, message) => {
             const msg = message.toString();
-            console.log('MSG received at topic: ${topic} -> ${msg}');
+            console.log(`MSG received at topic: ${topic} -> ${msg}`);
             updateOperationalData(topic, msg);
         });
     }
