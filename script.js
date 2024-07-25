@@ -71,7 +71,7 @@ function setupMQTT() {
     });
 
     client.on('message', function(topic, message) {
-        if (topic === 'processed/operational/data') {
+        if (topic === 'conveyor/operational_data/#') {
             console.log('Message received:', message.toString());
             const data = JSON.parse(message.toString());
             updateOperationalData(data);
