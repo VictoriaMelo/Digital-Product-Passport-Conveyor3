@@ -148,6 +148,10 @@ ul {
     transform: rotate(90deg);
 }
 
+.content-section span {
+    font-weight: bold;
+}
+
 footer {
     background: #fff;
     color: #333;
