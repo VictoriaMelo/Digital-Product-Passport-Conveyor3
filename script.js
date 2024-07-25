@@ -55,35 +55,38 @@ function toggleList(listId, element) {
 }
 
 function setupMQTT() {
+    const mqttBroker = 'wss://test.mosquitto.org:8081/mqtt'; // WebSocket URL for the broker
+    const topic = 'conveyor/operational_data/#'; // Use o seu tópico
     if (!mqttClient) {
-        mqttClient = mqtt.connect('wss://test.mosquitto.org:8081/mqtt');
+        
+        mqttClient = mqtt.connect('mqttBroker');
 
         mqttClient.on('connect', () => {
-            console.log('Conectado ao broker MQTT');
-            mqttClient.subscribe('conveyor/operational_data/#', (err) => {
+            console.log('Connected to broker: ${mqttBroker}');
+            mqttClient.subscribe(topic, (err) => {
                 if (err) {
-                    console.error('Erro ao se inscrever nos tópicos:', err);
+                    console.error('Failed to subscribe to topic: ${topic}', err);
                 } else {
-                    console.log('Inscrito com sucesso nos tópicos conveyor/operational_data/#');
+                    console.log('Subscribed to topic: ${topic}');
                 }
             });
         });
 
         mqttClient.on('error', (err) => {
-            console.error('Erro na conexão MQTT:', err);
+            console.error('Failed to connect with the MQTT broker: ${mqttBroker}', err);
         });
 
         mqttClient.on('offline', () => {
-            console.log('MQTT Client está offline');
+            console.log('MQTT Client offline');
         });
 
         mqttClient.on('reconnect', () => {
-            console.log('Reconectando ao broker MQTT...');
+            console.log('Reconnecting to the broker MQTT...');
         });
 
         mqttClient.on('message', (topic, message) => {
             const msg = message.toString();
-            console.log(`Recebido: ${topic} -> ${msg}`);
+            console.log(MSG received at topic: ${topic} -> ${msg}`);
             updateOperationalData(topic, msg);
         });
     }
