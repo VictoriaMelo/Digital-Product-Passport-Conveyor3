@@ -61,18 +61,18 @@ function setupMQTT() {
         mqttClient = mqtt.connect(mqttBroker);
 
         mqttClient.on('connect', () => {
-            console.log('Connected to broker: ${mqttBroker}');
+            console.log(`Connected to broker: ${mqttBroker}`);
             mqttClient.subscribe(topic, (err) => {
                 if (err) {
-                    console.error('Failed to subscribe to topic: ${topic}', err);
+                    console.error(`Failed to subscribe to topic: ${topic}`, err);
                 } else {
-                    console.log('Subscribed to topic: ${topic}');
+                    console.log(`Subscribed to topic: ${topic}`);
                 }
             });
         });
 
         mqttClient.on('error', (err) => {
-            console.error('Failed to connect with the MQTT broker: ${mqttBroker}', err);
+            console.error(`Failed to connect with the MQTT broker: ${mqttBroker}`, err);
         });
 
         mqttClient.on('offline', () => {
