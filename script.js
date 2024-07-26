@@ -94,8 +94,8 @@ function setupMQTT() {
 function updateOperationalData(topic, message) {
     console.log(`Atualizando dados para o tópico: ${topic} com a mensagem: ${message}`);
     switch (topic) {
-        case 'conveyor/operational_data/conveyors_in_sequence':
-            document.getElementById('conveyors_in_sequence').innerText = message;
+        case 'conveyor/operational_data/conveyorCount':
+            document.getElementById('conveyorCount').innerText = message;
             break;
         case 'conveyor/operational_data/position_in_sequence':
             document.getElementById('position_in_sequence').innerText = message;
