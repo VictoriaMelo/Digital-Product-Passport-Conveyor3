@@ -5,6 +5,7 @@ var mqttClient = null;
 document.addEventListener('DOMContentLoaded', () => {
     showSection('identification');
     setupMQTT();
+    loadStoredValues();
 });
 
 function showSection(sectionId) {
@@ -93,6 +94,14 @@ function setupMQTT() {
 
 function updateOperationalData(topic, message) {
     console.log(`Atualizando dados para o tópico: ${topic} com a mensagem: ${message}`);
+    const elementId = getElementIdByTopic(topic);
+    if (elementId) {
+        document.getElementById(elementId).innerText = message;
+        localStorage.setItem(elementId, message);
+    }
+}
+
+function getElementIdByTopic(topic) {
     switch (topic) {
         case 'conveyor/operational_data/conveyorCount':
             document.getElementById('conveyorCount').innerText = message;
@@ -130,4 +139,28 @@ function updateOperationalData(topic, message) {
         default:
             console.log(`Tópico desconhecido: ${topic}`);
     }
+}
+
+function loadStoredValues() {
+    // Carrega valores armazenados no localStorage
+    const elementIds = [
+        'conveyorCount',
+        'position_in_sequence',
+        'motor_status',
+        'input_sensor_status',
+        'output_sensor_status',
+        'number_of_pieces',
+        'last_piece_time',
+        'motor_operating_time',
+        'vibration',
+        'current',
+        'battery_level'
+    ];
+
+    elementIds.forEach(id => {
+        const value = localStorage.getItem(id);
+        if (value !== null) {
+            document.getElementById(id).innerText = value;
+        }
+    });
 }
