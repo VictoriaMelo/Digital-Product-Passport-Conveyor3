@@ -104,40 +104,30 @@ function updateOperationalData(topic, message) {
 function getElementIdByTopic(topic) {
     switch (topic) {
         case 'conveyor/operational_data/conveyorCount':
-            document.getElementById('conveyorCount').innerText = message;
-            break;
+            return 'conveyorCount';
         case 'conveyor/operational_data/position_in_sequence':
-            document.getElementById('position_in_sequence').innerText = message;
-            break;
+            return 'position_in_sequence';
         case 'conveyor/operational_data/motor_status':
-            document.getElementById('motor_status').innerText = message;
-            break;
+            return 'motor_status';
         case 'conveyor/operational_data/input_sensor_status':
-            document.getElementById('input_sensor_status').innerText = message;
-            break;
+            return 'input_sensor_status';
         case 'conveyor/operational_data/output_sensor_status':
-            document.getElementById('output_sensor_status').innerText = message;
-            break;
+            return 'output_sensor_status';
         case 'conveyor/operational_data/number_of_pieces':
-            document.getElementById('number_of_pieces').innerText = message;
-            break;
+            return 'number_of_pieces';
         case 'conveyor/operational_data/last_piece_time':
-            document.getElementById('last_piece_time').innerText = message;
-            break;
+            return 'last_piece_time';
         case 'conveyor/operational_data/motor_operating_time':
-            document.getElementById('motor_operating_time').innerText = message;
-            break;
+            return 'motor_operating_time';
         case 'conveyor/operational_data/vibration':
-            document.getElementById('vibration').innerText = message;
-            break;
+            return 'vibration';
         case 'conveyor/operational_data/current':
-            document.getElementById('current').innerText = message;
-            break;
+            return 'current';
         case 'conveyor/operational_data/battery_level':
-            document.getElementById('battery_level').innerText = message;
-            break;
+            return 'battery_level';
         default:
             console.log(`Tópico desconhecido: ${topic}`);
+            return null;
     }
 }
 
