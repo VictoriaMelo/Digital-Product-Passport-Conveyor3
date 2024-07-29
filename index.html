@@ -29,6 +29,7 @@
                 <button onclick="showSection('productiondata')">Production data</button>
                 <button onclick="showSection('videosystem')">Conveyor operation</button>
                 <button onclick="showSection('introduction')">Operational data</button>
+                <button onclick="showSection('3d_model')">3D Model</button>
                 <button onclick="showSection('details')">Other information</button>
             </section>
             <div id="content">
@@ -149,6 +150,10 @@
                     <p>Current: <span id="current">No data being published at the moment.</span></p>
                     <p>Battery level: <span id="battery_level">No data being published at the moment.</span></p>
                     <p>Last values update / Last values received at: <span id="update_date">No data being published at the moment.</span></p>
+                </section>
+                <section id="3d_model" class="content-section" style="display:none;">
+                    <h2>3D Model</h2>
+                    <iframe id="edrawings_iframe" width="800" height="600" src="Conveyor_Simples.EASM"></iframe>
                 </section>
                 <section id="details" class="content-section" style="display:none;">
                     <!--<h2>Detailed Information</h2> -->
