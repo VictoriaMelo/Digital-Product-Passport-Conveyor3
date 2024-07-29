@@ -98,6 +98,10 @@ function updateOperationalData(topic, message) {
     if (elementId) {
         document.getElementById(elementId).innerText = message;
         localStorage.setItem(elementId, message);
+
+        const updateDate = new Date().toString();
+        document.getElementById('update_date').innerText = updateDate;
+        localStorage.setItem('update_date', updateDate);
     }
 }
 
@@ -153,4 +157,9 @@ function loadStoredValues() {
             document.getElementById(id).innerText = value;
         }
     });
+
+    const updateDate = localStorage.getItem('update_date');
+    if (updateDate !== null) {
+        document.getElementById('update_date').innerText = updateDate;
+    }
 }
