@@ -124,6 +124,15 @@ ul {
     margin-bottom: 1em; //Espaçamento inferior para listas
 }
 
+#3d_container {
+    width: 100%;
+    height: 500px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+}
+
 .hidden {
     display: none;
 }
