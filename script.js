@@ -170,7 +170,7 @@ function init3DModel() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
@@ -178,22 +178,21 @@ function init3DModel() {
     loader.load('conveyor_3d.glb', (gltf) => {
         scene.add(gltf.scene);
         animate();
+    }, undefined, function (error) {
+        console.error(error);
     });
 
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(1, 1, 1).normalize();
     scene.add(light);
 
-    camera.position.z = 5;
+    const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
+    scene.add(ambientLight);
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.25;
-    controls.enableZoom = true;
+    camera.position.z = 5;
 
     function animate() {
         requestAnimationFrame(animate);
-        controls.update();
         renderer.render(scene, camera);
     }
 
