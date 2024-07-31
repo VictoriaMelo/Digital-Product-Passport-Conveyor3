@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showSection('identification');
     setupMQTT();
     loadStoredValues();
+    init3DModel();
 });
 
 function showSection(sectionId) {
